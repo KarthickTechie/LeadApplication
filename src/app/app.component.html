@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >LEND<i>perfecft</i></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a >Home</a></li>
+      <li><a >Page 1</a></li>
+      <li><a >Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a ><span class="badge padding" [style.backgroundColor]="badgeBackground">{{customers.length}}</span><span class="glyphicon glyphicon-user"></span> New Leads</a></li>
+      <li><a ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+<br>
+<div class="col-md-6">
+  <form>
+    <div class="input-group col-md-6">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="customername" type="text" class="form-control" name="customername" placeholder="Customer Name" 
+      [disabled]="isDisable"
+      [(ngModel)]="customerInfo.customerName"
+      #customerName>
+    </div>
+    <br>
+    <div class="input-group col-md-6">
+      <span class="input-group-addon"><i class="fa-solid fa-money-bill"></i></span>
+      <input id="loanamount" type="text" class="form-control" name="loanamount" placeholder="Loan Amount" 
+      [(ngModel)]="customerInfo.loanAmount"
+      #loanAmount>
+    </div>
+    <br>
+    <input type="button" class="btn btn-primary btn-sm" value="Save" (click)="saveCustomer(customerInfo)">
+  </form>
+  
+</div>
+
+<div class="col-md-6">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let customer of customers ; let i = index" (click)="showCustomer(customer)" 
+   
+    >
+      <div class="detail-container">
+        <h4>{{customer.customerName}}</h4>
+        <h4>{{customer.loanAmount}}</h4>
+        <i class="fa-solid fa-trash-can fa-2x" (click)="deleteCustomer(i,$event)"></i>
+        
+      </div>
+    </li>
+  </ul>
+</div>
+
+</div>
