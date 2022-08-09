@@ -1,0 +1,17 @@
+.Active {
+  color: red;
+}
+
+.detail-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+div.detail-container > i {
+  visibility: hidden;
+}
+
+div.detail-container:hover > i {
+  visibility: visible;
+  color: red;
+}
